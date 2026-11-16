@@ -75,7 +75,7 @@ module Aromancer
           configure
         }},
         {value: :exit, proc: Proc.new{
-          exit
+          Aromancer::Cli.safe_exit!
         }}
       ]
       Thread.main[:route] = __method__.to_sym
@@ -241,7 +241,7 @@ module Aromancer
           end
         }},
         {value: :exit, proc: Proc.new{
-          exit
+          Aromancer::Cli.safe_exit!
         }}
       ]
       Thread.main[:route] = __method__.to_sym

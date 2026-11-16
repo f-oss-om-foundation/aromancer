@@ -30,22 +30,10 @@ module Aromancer
 
   def self.configure_home
     FileUtils.mkdir_p(Aromancer.home_directory) unless Dir.exist? Aromancer.home_directory
-    FileUtils.mkdir_p(Aromancer.arena_directory) unless Dir.exist? Aromancer.arena_directory
-    unless Dir.exist? File.join(Aromancer.home_directory, :".git".to_s)
-      FileUtils.chdir Aromancer.home_directory do
-        system(:"git init".to_s)
-        system(:"git add .".to_s)
-        system(:"git commit -m \"#{self.name} initial commit\"".to_s)
-      end
-    end
   end
 
   def self.home_directory
     "#{`echo $HOME`.strip}/.aromancer"
-  end
-
-  def self.arena_directory
-    File.join(home_directory, :arena.to_s)
   end
 
   def self.date_display(raw)
@@ -125,4 +113,5 @@ module Aromancer
 
     Aromancer::Prompt.say(I18n.t(i18n_key || "shared.last_error", status: last_error[:status], error: message), rjust: true)
   end
+
 end

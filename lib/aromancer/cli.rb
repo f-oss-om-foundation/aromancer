@@ -15,7 +15,13 @@ module Aromancer
   class Cli
     include Singleton
 
-    attr_accessor :error_timeout, :last_render, :should_clear_cache, :storage_mutex, :ui_busy, :ui_thread, :ws_busy, :ws_thread
+    attr_accessor :error_timeout
+    attr_accessor :last_render
+    attr_accessor :should_clear_cache
+    attr_accessor :storage_mutex
+    attr_accessor :ui_busy, :ui_thread
+    attr_accessor :ws_busy, :ws_thread
+    attr_accessor :running_dimension
 
     RENDER_DELAY = 0.1
 
@@ -30,8 +36,17 @@ module Aromancer
       Thread.main[:menu_options] = {}
     end
 
+    def self.safe_exit!
+      if self.instance.running_dimension == :plugin_mode
+        raise "plugin_mode"
+      else
+        exit
+      end
+    end
+
     # user entry point
-    def self.run
+    def self.run(dimension = :default)
+      self.instance.running_dimension = dimension
       Aromancer::Websocket.instance
       Aromancer::Storage.instance.ensure_default_preferences_exist
 
@@ -71,7 +86,7 @@ module Aromancer
           sleep(1)
         rescue Interrupt => e
           Aromancer::Prompt.say("interrupt on main thread...exiting immediately.")
-          exit
+          return Aromancer::Cli.safe_exit!
         end
       end
     end

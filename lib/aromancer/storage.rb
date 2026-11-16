@@ -202,7 +202,6 @@ module Aromancer
 
     def self.set_arena(arena_hash)
       instance.set_key(:arena, arena_hash)
-      Aromancer::UnixDom.render_arena
     end
 
     def self.get_arena
@@ -268,6 +267,12 @@ module Aromancer
       port = Aromancer::Storage.instance.get_key(:server_url_port)
 
       URI.parse("#{w_scheme}://#{host}:#{port}/#{w_path}").to_s
+    end
+
+    def dump_game_state
+      Aromancer::Cli.instance.storage_mutex.synchronize do
+        return JSON.parse(File.read(Aromancer::Storage.storage_filepath, encoding: "UTF-8"))
+      end
     end
 
     def get_key(key)

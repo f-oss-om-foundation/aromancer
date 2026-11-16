@@ -1,4 +1,5 @@
-# [aromancer](https://rubygems.org/gems/aromancer)
+# [aromancer(rubygems)](https://rubygems.org/gems/aromancer)
+# [aromancer(github)](https://rubygems.org/gems/aromancer)
 ## word
 ### sentence
 #### scroll
