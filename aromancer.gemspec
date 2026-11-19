@@ -10,6 +10,8 @@
 
 =end
 
+GEM_DESCRIPTION = "aromancer is a unix tarot card game."
+
 require_relative "lib/aromancer/version"
 
 Gem::Specification.new do |spec|
@@ -18,9 +20,9 @@ Gem::Specification.new do |spec|
   spec.authors = ["i2097i"]
   spec.email = ["i2097i@hotmail.com"]
 
-  spec.description   = ""
-  spec.summary       = ""
-  spec.homepage      = "https://github.com/i2097i/aromancer"
+  spec.description   = GEM_DESCRIPTION + "\n#{Aromancer::VERSION} release notes: #{Aromancer::RELEASE_NOTES}"
+  spec.summary       = GEM_DESCRIPTION
+  spec.homepage      = "https://github.com/f-oss-om-foundation/aromancer"
   spec.license       = "MIT"
   spec.files         = `git ls-files`.split("\n").reject{|p| p.match?(/^(spec|.release|.*.gem$)/)}
   spec.bindir        = "bin"
