@@ -3,8 +3,8 @@ en:
     confirm: "are you sure?"
     empty: "there is nothing here"
     key_escape: "escape key pressed."
-    key_press: "press enter to continue: "
-    inturrupt: "exiting due to user inturrupt..."
+    key_press: "enter to continue"
+    inturrupt: "exiting due to user interrupt..."
     reader_initialized: "input reader initialized."
     welcome: "welcome aromancer. loading v%{version}..."
     server_url: "current server: %{url}"
@@ -71,6 +71,7 @@ en:
       last_error: "last error"
       returning_to_: "returning to %{route}..."
       your_alchemy: "alchemy"
+      show_details: "show details"
     legends:
       help: ""
     legend_menu:

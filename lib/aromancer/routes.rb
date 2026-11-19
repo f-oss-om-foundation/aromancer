@@ -214,14 +214,19 @@ module Aromancer
         {value: :new, proc: Proc.new{
           # this will run on the main thread
           params = Aromancer::Api::DEFAULT_LEGEND_PARAMS.dup
-
-          player_count = nil
-          while player_count.nil? || ![1, 2].include?(player_count&.to_i)
-            player_count = Aromancer::Prompt.p.ask(I18n.t("routes.main_menu.player_count"))
+          player_count = Aromancer::Prompt.p.select(
+            I18n.t("routes.main_menu.player_count"),
+            [{name: :back, value: :back}] + [1, 2].map{|i| {name: "start_#{i}_player_game", value: i}},
+            show_help: :always,
+            cycle: true
+          )
+          if player_count == :back
+            main_menu
+          else
+            params[:player_count] = player_count.to_i
+            Thread.main[:route_params] = [params]
+            new_game(params)
           end
-          params[:player_count] = player_count
-          Thread.main[:route_params] = [params]
-          new_game(params)
         }},
         {value: :load, proc: Proc.new{ Thread.main[:route] = :legends }},
         {value: :find, proc: Proc.new{ Thread.main[:route] = :find_game }},
@@ -381,10 +386,14 @@ module Aromancer
           end
         when :complete
           Thread.main[:menu_options][__method__.to_sym] = [
-            {name: I18n.t("shared.key_press"), value: :key_press}
+            {name: :back, value: :back},
+            {name: I18n.t("routes.legend.show_details"), value: :show_details},
           ]
           Thread.main[:menu_runners][__method__.to_sym] = [
-            {value: :key_press, proc: Proc.new{
+            {value: :show_details, proc: Proc.new{
+              puts "todo: show_details"
+            }},
+            {value: :back, proc: Proc.new{
               Aromancer::Prompt.say(I18n.t("routes.legend.returning_to_", route: :legends))
               Aromancer::Api.set_active_legend_id(nil)
               Thread.main[:route] = :legends
