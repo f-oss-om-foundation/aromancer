@@ -16,7 +16,7 @@ module Aromancer
 
     def self.run
       unless Dir.exist?(serve_dir)
-        system(:"git clone git@github.com:arowmancy/#{SERVER_NAME}.git #{serve_dir}".to_s)
+        system(:"git clone git@github.com:f-oss-om-foundation/#{SERVER_NAME}.git #{serve_dir}".to_s)
       end
       FileUtils.chdir serve_dir do
         branch = "v#{Aromancer::VERSION}"

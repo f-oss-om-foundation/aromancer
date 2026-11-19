@@ -1,5 +1,5 @@
 # [aromancer(rubygems)](https://rubygems.org/gems/aromancer)
-# [aromancer(github)](https://rubygems.org/gems/aromancer)
+# [aromancer(github)](https://github.com/f-oss-om-foundation/aromancer)
 ## word
 ### sentence
 #### scroll
@@ -7,9 +7,14 @@
 ##### dictionary
 ##### story
 ###### legend
-###### [aromancer_serve](https://github.com/arowmancy/aromancer_serve)
+###### [aromancer_serve](https://github.com/f-oss-om-foundation/aromancer_serve)
 
-`tl;dr`
+##### __current version:__
+[![Gem Version](https://badge.fury.io/rb/aromancer.svg)](https://badge.fury.io/rb/aromancer)
+
+```json
+{"tldr": "aromancer is a unix tarot card game."}
+```
 
 ```bash
 gem install aromancer && aromancer serve
@@ -23,6 +28,6 @@ aromancer
 
 [rubygems](https://rubygems.org/gems/aromancer)
 [license](http://opensource.org/licenses/MIT)
-[issues](https://github.com/i2097i/aromancer/issues)
+[issues](https://github.com/f-oss-om-foundation/aromancer/issues)
 
 #### aromancer by scot reichman is copyright (2026)

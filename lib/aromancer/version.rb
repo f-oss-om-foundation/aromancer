@@ -11,8 +11,8 @@
 =end
 
 module Aromancer
-  VERSION = "0.1.0"
+  VERSION = "0.1.1"
   RELEASE_NOTES = [
-    :adds_oss_om_plugin
+
   ].join(" | ")
 end
