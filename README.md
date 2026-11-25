@@ -26,6 +26,8 @@ aromancer
 #### `in-game`
 > go to `configure` and verify settings
 
+![aromancer screenshot](./screenshot.png)
+
 [rubygems](https://rubygems.org/gems/aromancer)
 [license](http://opensource.org/licenses/MIT)
 [issues](https://github.com/f-oss-om-foundation/aromancer/issues)
